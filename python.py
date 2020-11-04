@@ -1,6 +1,7 @@
 import time
 from typing import List
-
+import random
+import os
 liste=[1,2,3]
 print(id(liste))
 liste.append(4)
@@ -142,6 +143,272 @@ nom_melange=[l for l in nom_r]
 print(nom_melange)
 print(''.join(nom_melange))
 
+import sys
+print(sys.path)
+print(sys.platform)
+print(sys.version)
+print(sys.executable)
+print(sys.argv)
+print(sys.getwindowsversion())
+
+from pprint import pprint
+pprint(dir)
+pprint(dir(os))
+os.system('echo bonjour')
+pprint(dir([]))
+print([].append.__doc__)
+pprint(type(pprint))
+age=[5,12,15,20,17]
+autorisation=any(a>=18 for a in age)
+print(autorisation)
+autorisation=all(a>=18 for a in age)
+print(autorisation)
+exemple=any([False,False,True,False])
+exemple=any([False,False,False,False])
+exemple_1=all([True,True,True,True])
+exemple_1=all([True,False,True,True])
+
+def addition(*args):
+    return(sum(args))
+print(addition(5,2,6,10))
+def invites(invite_vip,*args):
+    print ('{}est un vip'.format(invite_vip))
+    for invite in args:
+        print('{} est un invite normal'.format(invite))
+invites('paul','pierre','marie','max')
+def invitées(invite_vip,*args,**kwargs):
+    print('{} est un vip'.format(invite_vip))
+    for invite in args:
+        print('{} est un invité normal'.format(invite))
+    indesirables=kwargs.get('indesirable')
+    if indesirables:
+        print('ces invites sont indesirables:{}'.format(','.join(indesirables)))
+invitées('paul','pierre','marie','max',indesirable=['simon','jean','julie'])
+
+a={5,6,8,9}
+b={5,6,10,12}
+print(a.union(b))
+print(a|b)
+print(a-b)
+print(b-a)
+print(a&b)
+print(a.intersection(b))
+print(a.difference(b))
+print(a.symmetric_difference(b))
+print(a^b)
+import random
+print(random.__doc__)#docstrings
+print(random.randint.__doc__)
+def multiplication(a,b):
+    """multiplie deux nombres et retourne le résultat de l'opération
+    :param a:le premier nombre
+    :param b:le second nombre
+    :type a:int
+    :type b:int
+    :return:le résultat de la multiplication
+    :rtype:int
+
+    :Example:
+
+    >>>multiplication(2,5)
+    10
+
+    """
+import re
+print('\tbonjour')
+print(r'\tbonjour')
+a=re.match(r'','pierre dupont')
+print(a)
+a=re.match(r'(\w+)(\s)(\w+)','pierre dupont')
+print(a.group(0))
+print(a.group(2))
+a=re.match(r'(?P<prenom>\w+) (?P<nom>\w+)','pierre dupont')
+print(a.group('prenom'))
+print(a.groups)
+print(a.groupdict())
+a=re.match(r'.+','pierre dupont')
+print(a.group())
+a=re.search(r' \+ ','pierre dupont + paul martin')
+print(a.group())
+text='item1 | item2 - item3 - item4 | item5'
+a=re.split(r'\| | -',text)
+print(a)
+#récupérer une clé inexistante d'un dictionnaire
+dic= {'pierre':'serveur',
+       'julien':'libraire',
+        'marie':'ingénieure'}
+prenom='jacques'
+profession=dic.get(prenom)#mot clé get
+print(profession)
+profession=dic.get(prenom,"{} n'est pas dans le registre.".format(prenom))
+print(profession)
+
+def generateur_liste(liste=[]): #liste vide à ne pas faire
+    liste.extend([random.randint(1,100)for i in range(5)])
+    return liste
+for i in range(5):
+    print(generateur_liste())
+def generateur_liste(liste=None):#plutôt mettre None
+    if liste is None:
+        liste=[]
+        liste.extend([random.randint(1,100)for i in range(5)])
+    return liste
+for i in range(5):
+    print(generateur_liste())
+
+#récupérer un élément inexistant d'une liste
+liste=range(10)
+index=9
+print(liste[index])
+try:
+    r=liste[index]
+    print(r)
+except IndexError:
+    print("l'index {} n'existe pas.".format(index))
+r=liste[index] if len(liste) > index else None # à conseiller
+
+prenom=['pierre','alain','marie'] #comment enlever un élément d'une liste
+prenom_sans_p=[p for p in prenom if p!='pierre']
+print(prenom_sans_p)
+
+#copier une liste
+liste=[1,2,3,4,5]
+liste_copie=liste[:]
+liste_copie=liste.copy()
+liste.append(5)
+print(liste)
+print(liste_copie)
+print(id(liste))
+print(id(liste_copie))
+
+#égalité is et ==
+a=5
+b=5
+print(a==b)
+print(a is b)# de -5 à 256
+a=-5000
+b=-5000
+print(a==b)
+print(a is b)
+
+import os
+print(os.__file__)
+print(__file__)
+dossier_courant=os.path.dirname(__file__)
+print(dossier_courant)
+
+#join
+
+tags=['vacances','italie','juillet',None]
+nom_fichier='_'.join(filter(None,tags))#filtrer sans None
+print(nom_fichier)
+nom_fichier='_'.join([i for i in tags if i])
+print(nom_fichier)
+
+#chainer les comparateurs
+
+nombre=25
+if 20 <nombre< 30:
+    print("le nombre est compris entre 20 et 30")
+
+#for else
+
+invites=['julien','marie','pierre','pascal']
+for invite in invites:
+    if invite =='pascal':
+        print('pascal a deja été invité !')
+        break #on peut rajouter break
+else:
+    print("pascal n'a pas été invité:(")
+
+#enlever d'une liste
+prenom='pierre'
+nom='dupont'
+id='1259845'
+liste=[id,nom,prenom]
+nomcomplet=''.join(liste)
+print(nomcomplet)
+prenom='pierre'
+nom='dupont'
+id=None
+liste=filter(None, [id,nom,prenom]) #filter
+liste=(e for e in (id,nom,prenom) if e)
+nomcomplet=''.join(liste)
+
+#defaultdict et OrderDict
+from collections import defaultdict
+mot='anticonstitutionnellement'
+d={}
+for lettre in mot:
+    if not d.get(lettre):
+        d[lettre]=1 #initialisation
+    else:
+        d[lettre] +=1
+print(d.items())
+mot='anticonstitutionnellement'
+d={}
+d = defaultdict(dict)
+for lettre in mot:
+    d[lettre]=1
+print(d.items())
+
+#utilisation de format
+
+text='{1}{0}'.format('pierre','dupont')
+print(text)
+text='{:10}{}'.format('debut','fin')
+print(text)
+text='{:>10}{}'.format('debut','fin')
+print(text)
+text='{:=>10}{:=<10}'.format('debut','fin')
+print(text)
+text='{:+^25}'.format('debut','fin')
+print(text)
+text='{:.3}'.format(2.5486)
+print(text)
+class mavoiture(object):
+    def __init__(self):
+        self.couleur='rouge'
+        self.marque='mercedes'
+text="j'ai une {o.marque}de couleur {o.couleur}".format(o=mavoiture())
+print(text)
+
+rangées=[1,2,3,4,5,9,8,4,8]
+print(*rangées,sep='-')
+print('-'.join(str(r) for r in rangées))
+
+#aplatir une liste
+liste_1=[[1,2,3],[4,5,6],[7,8,9]]
+ma_listeaplatie=sum(liste_1,[])
+print(ma_listeaplatie)
+malisteaplatiesansdouble=sorted(set(ma_listeaplatie))
+print(malisteaplatiesansdouble)
+
+#inverser les valeurs et les clés d'un dictionnaire
+from pprint import pprint
+LONG_NAMES={'ann_scn':'animation scene',
+            'ann_pub':'animation publish',
+            'sim_scn':'simulation scene'}
+pprint(zip(LONG_NAMES.values(),LONG_NAMES.keys()))
+SHORT_NAMES=dict(zip(LONG_NAMES.values(),LONG_NAMES.keys()))
+print(SHORT_NAMES)
+print(LONG_NAMES.get('ann_scn'))
 
 
+import sys
+from PySide2 import QtGui,QtCore,QPushButton #unpacking
+couleur_bouton={255,0,0}
+class InterfaceBasique (QtGui,QPushButton):
+    def __init__(self,text='clique!'):
+        super(InterfaceBasique,self).__init__(text)
+    self.setStyleSheet('background-color:rgb({},{},{})'.format(couleur_bouton[0],couleur_bouton[1],couleur_bouton[2]))
+    self.setStyleSheet('background-color:rgb({},{},{})'.format(*couleur_bouton))
+    self.setStyleSheet('background-color:rgb({rouge},{vert},{bleu})'.format(**couleur_bouton))
+    self.show()
 
+app=QtGui.QApplication([])
+bouton=InterfaceBasique()
+bouton.show()
+sys.exit(app.exec_())
+import docstring
+print(docstring.multiplication.__doc__)
