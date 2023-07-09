@@ -2,6 +2,9 @@ import time
 from typing import List
 import random
 import os
+import sys
+
+
 liste=[1,2,3]
 print(id(liste))
 liste.append(4)
@@ -393,22 +396,3 @@ pprint(zip(LONG_NAMES.values(),LONG_NAMES.keys()))
 SHORT_NAMES=dict(zip(LONG_NAMES.values(),LONG_NAMES.keys()))
 print(SHORT_NAMES)
 print(LONG_NAMES.get('ann_scn'))
-
-
-import sys
-from PySide2 import QtGui,QtCore,QPushButton #unpacking
-couleur_bouton={255,0,0}
-class InterfaceBasique (QtGui,QPushButton):
-    def __init__(self,text='clique!'):
-        super(InterfaceBasique,self).__init__(text)
-    self.setStyleSheet('background-color:rgb({},{},{})'.format(couleur_bouton[0],couleur_bouton[1],couleur_bouton[2]))
-    self.setStyleSheet('background-color:rgb({},{},{})'.format(*couleur_bouton))
-    self.setStyleSheet('background-color:rgb({rouge},{vert},{bleu})'.format(**couleur_bouton))
-    self.show()
-
-app=QtGui.QApplication([])
-bouton=InterfaceBasique()
-bouton.show()
-sys.exit(app.exec_())
-import docstring
-print(docstring.multiplication.__doc__)
