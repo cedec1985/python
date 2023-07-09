@@ -1,3 +1,4 @@
+
 import kivy
 kivy.require('1.1.1')
 
@@ -8,7 +9,6 @@ from kivy.properties import (
 )
 from kivy.vector import Vector
 from kivy.clock import Clock
-
 
 class PongPaddle(Widget):
     score = NumericProperty(0)
