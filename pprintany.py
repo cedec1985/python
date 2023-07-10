@@ -1,0 +1,16 @@
+from pprint import pprint
+pprint(dir)
+pprint(dir(os))
+os.system('echo bonjour')
+pprint(dir([]))
+print([].append.__doc__)
+pprint(type(pprint))
+age=[5,12,15,20,17]
+autorisation=any(a>=18 for a in age)
+print(autorisation)
+autorisation=all(a>=18 for a in age)
+print(autorisation)
+exemple=any([False,False,True,False])
+exemple=any([False,False,False,False])
+exemple_1=all([True,True,True,True])
+exemple_1=all([True,False,True,True])

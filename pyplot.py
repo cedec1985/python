@@ -10,8 +10,8 @@ pyplot.plot(x, y, label = 'A')
 pyplot.plot(x, y, 'r+', y, y, 'bo')
 
 
-pyplot.plot([1, 3, 2, 3], [4, 8, 5, 4], linestyle = 'none', marker = 'o', c = 'lime',
-  markersize = 10)
+pyplot.plot([1, 3, 2, 3], [4, 8, 5, 4], linestyle = 'dotted', marker = '*', c = 'lime',
+markersize = 10)
 pyplot.xlim(0, 4)
 pyplot.ylim(0, 10)
 pyplot.title('Avec des points seulement')
@@ -20,8 +20,8 @@ pyplot.title('Avec des points seulement')
 val = [math.log(i + 1) for i in range(100)]
 labels = ['lab' + str(i) for i in range(100)]
 tickLabels = [labels[i] for i in range(100) if (i % 10) == 0]
-pyplot.plot(val, linestyle = 'none', marker = '+')
-pyplot.gca().get_xaxis().set_ticklabels(tickLabels, fontsize = 8, rotation = 90)
+pyplot.plot(val, linestyle = 'dotted', marker = '+')
+pyplot.gca().get_xaxis().set_ticklabels(tickLabels, fontsize = 12, rotation = 45)
 pyplot.gca().get_xaxis().set_ticks([i for i in range(len(val)) if i % 10 == 0])
 
 

@@ -9,12 +9,8 @@ def f(i):
     for i in range(5):
         i+=1
         return i
-try:
-    f(2)
-except: 
-    IndexError
-finally:
-    print("il y a une erreur dans le programme")
+print(f(3))
+
 import re
 yil={'a':"4",'b':"5",'c':"4",'d':"3",'e':"8"}
 f=r'a'

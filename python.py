@@ -31,7 +31,7 @@ print("temps d'exécution:{}".format(d-c))
 dc=[]
 dc.append(['orange'])
 dc.append(['apples'])
-print("la liste des fuits:",dc)
+print("la liste des fruits:",dc)
 print(len(dc))
 print(dc)
 
